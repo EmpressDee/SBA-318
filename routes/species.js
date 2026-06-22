@@ -42,7 +42,19 @@ router.patch("/:id",(req,res) => {
     }
     species[speciesIndex] = { ...species[speciesIndex], ...req.body }
     res.json(species[speciesIndex]);
+});
+
+router.delete("/:id", (req,res) => {
+    const speciesIndex = species.findIndex(s=> s.id == req.params.id)
+    if (speciesIndex === -1) {
+        return res.status(404).json({
+            error: "Not found"
+        })
+    }
+        species.splice(speciesIndex, 1)
+        res.json({ message: "Species deleted successfully"})
 })
+
 
 
 export default router;
