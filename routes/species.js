@@ -9,7 +9,14 @@ const router = express.Router();
 //create a GET route to return all the species
 
 router.get("/",(req, res) =>{
-    res.json(species)
+    const type = req.query.type;
+    if (type) {
+        const typeFilter = species.filter(s => s.type === type);
+        res.json(typeFilter);
+    } else {
+        res.json(species)
+    }
+    
 });
 
 //need to add error handling--maybe if statement or try/catch
