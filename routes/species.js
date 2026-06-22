@@ -27,11 +27,22 @@ error: "Species not found"
 });
 
 router.post("/", (req,res) =>{
-    const newSpecies = {id: Date.now(), ...req.body};
+    const newSpecies = {id: Date.now(), ...req.body}; // ... spread operator. Avoids having to write every field manually
         species.push(newSpecies);
 
         res.status(201).json(newSpecies);
 });
+
+router.patch("/:id",(req,res) => {
+    const speciesIndex = species.findIndex(s => s.id == req.params.id)
+    if (speciesIndex === -1) {
+        return res.status(404).json({
+            error: "Couldnt find a match"
+        })
+    }
+    species[speciesIndex] = { ...species[speciesIndex], ...req.body }
+    res.json(species[speciesIndex]);
+})
 
 
 export default router;
