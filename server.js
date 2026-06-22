@@ -17,11 +17,21 @@ import { logreq, addTimeStamp } from "./middleware/index.js";
 const port = 3000;
 const app = express();
 
-app.listen(port, () => {
-    console.log(`Listening on port: ${port}`)
-});
+
+app.use(express.json()) //parsing middleware
+app.use(logreq);
+app.use(addTimeStamp);
+
+
+
+
 
 app.use((err,req, res, next) => {
-    console.log(err.message)
-    res.status(500).send("ERROR!")
+    const status = err.status || 500;
+    res.status(status).json({error: err.message})
+});
+
+
+app.listen(port, () => {
+    console.log(`Listening on port: ${port}`)
 });
