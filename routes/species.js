@@ -26,5 +26,12 @@ error: "Species not found"
     res.json(speciesId)
 });
 
+router.post("/", (req,res) =>{
+    const newSpecies = {id: Date.now(), ...req.body};
+        species.push(newSpecies);
+
+        res.status(201).json(newSpecies);
+});
+
 
 export default router;
