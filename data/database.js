@@ -243,4 +243,4 @@ let care_tips = [
   },
 ];
 
-module.exports = { species, enclosures, care_tips };
+export { species, enclosures, care_tips };
