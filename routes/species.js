@@ -15,7 +15,16 @@ router.get("/",(req, res) =>{
 //need to add error handling--maybe if statement or try/catch
 router.get("/:id", (req,res) => {
     const speciesId = species.find(species => species.id == req.params.id)
+
+    if (!speciesId) {
+       return res.status(404).json({
+error: "Species not found"
+       })
+        
+    
+    }
     res.json(speciesId)
-})
+});
+
 
 export default router;
