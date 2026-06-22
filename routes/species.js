@@ -8,4 +8,11 @@ const router = express.Router();
 
 //create a GET route to return all the species
 
-router.get("/")
+router.get("/",(req, res) =>{
+    res.json(species)
+});
+
+router.get("/:id", (req,res) => {
+    const speciesId = species.find(species => species.id == req.params.id)
+    res.json(speciesId)
+})
