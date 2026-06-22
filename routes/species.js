@@ -12,7 +12,10 @@ router.get("/",(req, res) =>{
     res.json(species)
 });
 
+//need to add error handling--maybe if statement or try/catch
 router.get("/:id", (req,res) => {
     const speciesId = species.find(species => species.id == req.params.id)
     res.json(speciesId)
 })
+
+export default router;
