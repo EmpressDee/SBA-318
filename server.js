@@ -12,6 +12,7 @@
 
 import express from "express"
 import { logreq, addTimeStamp } from "./middleware/index.js";
+import  speciesRouter from "./routes/species.js"; // can pick any name for variable when using default router
 
 
 const port = 3000;
@@ -21,6 +22,7 @@ const app = express();
 app.use(express.json()) //parsing middleware
 app.use(logreq);
 app.use(addTimeStamp);
+app.use("/api/species", speciesRouter)
 
 
 
