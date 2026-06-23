@@ -1,3 +1,4 @@
+// node server.js  then localhost:3000/api/species
 // imports
 // ↓
 // app setup (express.json, static files)
@@ -13,6 +14,7 @@
 import express from "express"
 import { logreq, addTimeStamp } from "./middleware/index.js";
 import  speciesRouter from "./routes/species.js"; // can pick any name for variable when using default router
+import enclosureRouter from "./routes/enclosures.js";
 
 
 const port = 3000;
@@ -23,6 +25,7 @@ app.use(express.json()) //parsing middleware
 app.use(logreq);
 app.use(addTimeStamp);
 app.use("/api/species", speciesRouter)
+app.use("/api/enclosures", enclosureRouter)
 
 
 
