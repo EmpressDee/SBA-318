@@ -15,17 +15,34 @@ import express from "express"
 import { logreq, addTimeStamp } from "./middleware/index.js";
 import  speciesRouter from "./routes/species.js"; // can pick any name for variable when using default router
 import enclosureRouter from "./routes/enclosures.js";
+import careRouter from "./routes/care-tips.js"
+import { species } from "./data/database.js";
 
 
 const port = 3000;
 const app = express();
 
 
+app.set("view engine", "ejs");  // tells Express to use EJS
+app.set("views", "./views");    
+
+
 app.use(express.json()) //parsing middleware
 app.use(logreq);
 app.use(addTimeStamp);
-app.use("/api/species", speciesRouter)
-app.use("/api/enclosures", enclosureRouter)
+
+
+app.use("/api/species", speciesRouter);
+app.use("/api/enclosures", enclosureRouter);
+app.use("/api/care-tips", careRouter);
+
+
+
+
+app.get("/", (req, res) => {
+    res.render("index", { species: species });
+});
+
 
 
 
