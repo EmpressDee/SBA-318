@@ -20,6 +20,17 @@
         <p>Diet: <%= s.diet %></p>
     </div>
 <% }) %>
-    
+    <form action="/api/species" method="POST">
+
+    <input type="text" name="name" placeholder="Species name">
+    <input type="text" name="type" placeholder="ex lizard,snake,turtle, etc">
+    <input type="text" name="diet" placeholder="ex omnivore, carnivore, etc">
+    <input type="text" name="difficulty" placeholder="ex beginner, intermediate, etc">
+    <input type="text" name="lifespan_years" placeholder="years">
+    <input type="text" name="origin" placeholder="origin">
+
+    <button>Submit</button>
+
+</form>
 </body>
 </html>

@@ -28,6 +28,7 @@ app.set("views", "./views");
 
 
 app.use(express.json()) //parsing middleware
+app.use(express.urlencoded({ extended: true }));
 app.use(logreq);
 app.use(addTimeStamp);
 
