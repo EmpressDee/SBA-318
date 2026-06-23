@@ -25,6 +25,7 @@ const app = express();
 
 app.set("view engine", "ejs");  // tells Express to use EJS
 app.set("views", "./views");    
+app.use(express.static("public")); // need this for css
 
 
 app.use(express.json()) //parsing middleware
